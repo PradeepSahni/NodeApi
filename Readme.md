@@ -1,10 +1,23 @@
-# npm init -y
-# npm i express  mysql2 sequelize nodemon
-# npm install --save-dev sequelize-cli
-# npx sequelize-cli init
-# npx sequelize-cli model:generate --name User --attributes name:string,email:string,password:string
+# initialize npm 
+   npm init -y
+# install express ,mysql2,sequelize,nodemon package 
+   npm i express  mysql2 sequelize nodemon
+# install  Sequlize 
+  npm install --save-dev sequelize-cli
+# init  Sequlize 
+  npx sequelize-cli init
+# create user model 
+  npx sequelize-cli model:generate --name User --attributes name:string,email:string,password:string
 # connect to your local DB into  config folder 
-# touch index.js
+  "development": {
+    "username": "root",
+    "password": "",
+    "database": "rewoke_node_api_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+# create index.js to  start node application 
+   touch index.js
 # put somne code into  index.js
 ------------------
     const express = require('express');
@@ -23,10 +36,10 @@
         "start": "nodemon app.js" 
 
 # Run Node application  
-    => npm start
+    npm start
 
 
 # to  receive req.body into every  controller 
-   =>  npm i body-parser
+   npm i body-parser
    const bodyParser = require('body-parser');
    app.use(bodyParser.json());
