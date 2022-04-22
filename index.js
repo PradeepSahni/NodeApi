@@ -2,7 +2,6 @@ const express = require('express');
 const initApiRoutes = require('./routes/api');
 const bodyParser = require('body-parser');
 
-
 let app = express();
 let  router = express.Router();
 let port = 8000;
