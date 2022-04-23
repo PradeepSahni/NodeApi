@@ -1,9 +1,12 @@
 const express = require("express");
 const Router = express.Router();
 const UserController = require('../controllers/UserController');
+const api = require('../middleware/auth');
 
 const initApiRoutes = (app)=>{
-    Router.post('/create_user',UserController.createUser);
+    Router.post('/createUser',UserController.createUser);
+    Router.post('/login',UserController.login);
+    Router.get('/getProfile',api.authMiddleWare,UserController.getProfile);
     return app.use("/api/",Router);
 }
 

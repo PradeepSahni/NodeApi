@@ -83,3 +83,41 @@
                 }
         });
     }
+# to create has password Etc, we need to install bycrypt  package 
+    npm install bcrypt
+    const {genSaltSync,hashSync,compareSync} = require('bcrypt');
+
+
+# to  create new token 
+    npm i jsonwebtoken
+    const {sign} = require('jsonwebtoken');
+    const jsonwebtoken = sign({result:getuser},'qwe1234',{expiresIn : '1h'});
+
+# to  verify the token  
+    into /middeleware/auth.js
+
+    const  {verify} = require('jsonwebtoken');
+    const authMiddleWare = (req,res,next)=>{
+    let authorization = req.get('Authorization');
+    let token  = authorization.split(' ')[1];
+    verify(token,'qwe1234',(err,decode)=>{
+        if(err){
+            return res.json({ success: 0, message: "Invalid token!"});
+        }
+        else{
+            req.User = decode.result;
+            next();
+        }
+    })
+    }
+
+# set  current User in Request 
+    req.User = decode;
+# how to use dotEnv  File 
+    npm i dotenv
+    touch .env
+    require('dotenv').config()
+    Use as this 
+    process.env.DB_NAME
+# To begin, let's create the .sequelizerc file in the root directory of your project, with the following content:
+    

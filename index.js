@@ -1,10 +1,11 @@
 const express = require('express');
 const initApiRoutes = require('./routes/api');
 const bodyParser = require('body-parser');
+global.msgHelper = require('./helpers/msg');
+require('dotenv').config()
 
 let app = express();
 let  router = express.Router();
-let port = 8000;
 
 app.use(bodyParser.json());
 
@@ -16,5 +17,5 @@ app.use("/", router);
 
 initApiRoutes(app);
 
-
-app.listen(port, () => console.log(`Building a login system with NodeJS is running on port ${port}!`));
+console.log(`Environment: ${process.env.NODE_ENV}`)
+app.listen(process.env.PORT, () => console.log(`NodeJS is running on port ${process.env.PORT}`));
